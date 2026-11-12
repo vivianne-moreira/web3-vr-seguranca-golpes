@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 6rem; background: #050304; }
+  body { @apply bg-ink-950 font-sans text-slate-300 antialiased overflow-x-hidden; }
+  h1, h2, h3, h4 { @apply font-display tracking-tight text-white; }
+  ::selection { background: #C8304D; color: #fff; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-aqua; }
+}
+
+@layer components {
+  .section { @apply relative mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28; }
+  .title { @apply font-display text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl; }
+  .lead { @apply mt-5 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg; }
+  .glass { @apply rounded-3xl border border-white/10 bg-white/[.04] backdrop-blur-xl; }
+  .grad-text { @apply bg-gradient-to-r from-aqua via-volt to-wine bg-clip-text text-transparent; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-semibold transition duration-300 active:scale-[.97]; }
+  .btn-primary { @apply btn text-white shadow-[0_0_32px_-4px_rgba(200,48,77,.6)] hover:-translate-y-0.5 hover:shadow-[0_0_44px_-2px_rgba(255,107,134,.7)]; background: linear-gradient(120deg, #E23B5A, #8B1E3F); }
+  .btn-ghost { @apply btn border border-white/15 bg-white/5 text-white backdrop-blur hover:border-volt/70 hover:bg-volt/15; }
+  .spot { position: relative; overflow: hidden; }
+  .spot::before { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity .3s; pointer-events: none;
+    background: radial-gradient(360px circle at var(--mx,50%) var(--my,50%), rgba(200,48,77,.28), transparent 60%); }
+  .spot:hover::before { opacity: 1; }
+  .reveal { opacity: 0; transform: translateY(26px) scale(.98); filter: blur(6px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1), filter .8s ease; transition-delay: var(--d, 0ms); }
+  .reveal.in { opacity: 1; transform: none; filter: none; }
+  .grid-bg { background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%); }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1; transform: none; filter: none; }
+}
