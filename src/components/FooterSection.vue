@@ -3,17 +3,11 @@ import { Github, ShieldCheck } from "lucide-vue-next";
 import { REPO_URL } from "@/data/messages";
 
 const team = [
-  "Vivianne Moreira",
-  "Jones Mendes",
-  "Josias Batista",
-  "Carlos Delfino",
+  { name: "Vivianne Moreira", image: "/images/Foto_Vivianne.jpeg" },
+  { name: "Jones Mendes", image: "/images/Foto_Jones.jpeg" },
+  { name: "Josias Batista", image: "/images/Foto_Josias.jpeg" },
+  { name: "Carlos Delfino", image: "/images/Foto_Carlos.jpeg" },
 ];
-const initials = (n: string) =>
-  n
-    .split(" ")
-    .map((p) => p[0])
-    .slice(0, 2)
-    .join("");
 </script>
 
 <template>
@@ -46,13 +40,15 @@ const initials = (n: string) =>
         <ul class="mt-4 grid gap-3 sm:grid-cols-2">
           <li
             v-for="p in team"
-            :key="p"
+            :key="p.name"
             class="flex items-center gap-3 text-sm text-slate-300"
           >
-            <span
-              class="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-wave to-volt text-xs font-bold text-white"
-              >{{ initials(p) }}</span
-            >{{ p }}
+            <img
+              :src="p.image"
+              :alt="`Foto de ${p.name}`"
+              class="relative z-0 h-9 w-9 shrink-0 rounded-full object-cover transition-transform duration-200 ease-out hover:z-10 hover:scale-[2.5] hover:shadow-[0_0_24px_rgba(56,189,248,0.9)]"
+            />
+            {{ p.name }}
           </li>
         </ul>
       </div>

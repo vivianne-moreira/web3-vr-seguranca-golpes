@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { Cpu, Boxes, Glasses, VideoOff } from 'lucide-vue-next'
 
-const videoSrc = '/video-backup.mp4'
+const videoSrc = '/videos/VDDEMO.mp4'
 const failed = ref(false)
 
 const specs = [
